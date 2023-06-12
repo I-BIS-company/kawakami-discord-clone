@@ -32,5 +32,14 @@
 
     .sidebarRight {
         background-color: #303136;
+        width: 300px;
+
+        .sidebarTop {
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
     }
 }
