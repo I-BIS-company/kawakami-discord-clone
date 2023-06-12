@@ -1,8 +1,8 @@
 .sidebar {
     display: flex;
-    flex: 0.35;
+    flex: 0.3;
     height: 100vh;
-    background-color: #393943; //TODO: Move to Home later.
+    // background-color: #393943; //TODO: Move to Home later.
 
     .sidebarLeft {
         display: flex;
@@ -34,6 +34,7 @@
         background-color: #303136;
         width: 300px;
         position: relative;
+        flex-grow: 1;
 
         .sidebarTop {
             color: #ffffff;
