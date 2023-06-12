@@ -1,6 +1,10 @@
 import React from "react";
 import "./Chat.scss";
 import ChatHeader from "./ChatHeader";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
+import GifIcon from "@mui/icons-material/Gif";
+import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 
 const Chat = () => {
   return (
@@ -10,7 +14,21 @@ const Chat = () => {
       {/* chatMessage */}
       <div className="chatMessage"></div>
       {/* chatInput */}
-      <div className="chatInput"></div>
+      <div className="chatInput">
+        <AddCircleOutlineIcon />
+        <form>
+          <input type="text" placeholder="Send message to #Udemy" />
+          <button type="submit" className="chatInputButton">
+            Send
+          </button>
+        </form>
+
+        <div className="chatInputIcons">
+          <CardGiftcardIcon />
+          <GifIcon />
+          <EmojiEmotionsIcon />
+        </div>
+      </div>
     </div>
   );
 };
