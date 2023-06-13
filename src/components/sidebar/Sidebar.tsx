@@ -13,7 +13,7 @@ import { addDoc, collection } from "firebase/firestore";
 // import { collection, query } from "firebase/firestore/lite";
 
 const Sidebar = () => {
-  const user = useAppSelector((state) => state.user);
+  const user = useAppSelector((state) => state.user.user);
   const { documents: channels } = useCollection("channels");
 
   const addChannel = async () => {
