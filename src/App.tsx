@@ -9,7 +9,7 @@ import { auth } from "./firebase";
 import { login, logout } from "./features/userSlice";
 
 function App() {
-  const user = useAppSelector((state) => state.user);
+  const user = useAppSelector((state) => state.user.user);
   // const user = null;]
   // console.log(user);
 
