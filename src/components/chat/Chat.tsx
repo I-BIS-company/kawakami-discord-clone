@@ -90,10 +90,17 @@ const Chat = () => {
       <ChatHeader channelName={channelName} />
       {/* chatMessage */}
       <div className="chatMessage">
+        {messages.map((message, index) => (
+          <ChatMessage
+            key={index}
+            message={message.message}
+            timestamp={message.timestamp}
+            user={message.user}
+          />
+        ))}
+        {/* <ChatMessage />
         <ChatMessage />
-        <ChatMessage />
-        <ChatMessage />
-        <ChatMessage />
+        <ChatMessage /> */}
       </div>
       {/* chatInput */}
       <div className="chatInput">
