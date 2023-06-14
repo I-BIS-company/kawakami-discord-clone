@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Chat.scss";
 import ChatHeader from "./ChatHeader";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -12,17 +12,53 @@ import {
   CollectionReference,
   DocumentData,
   DocumentReference,
+  Timestamp,
   addDoc,
   collection,
+  onSnapshot,
   serverTimestamp,
 } from "firebase/firestore";
 
+interface Messages {
+  timestamp: Timestamp;
+  message: string;
+  user: {
+    uid: string;
+    photo: string;
+    email: string;
+    displayName: string;
+  };
+}
+
 const Chat = () => {
   const [inputText, setInputText] = useState<string>("");
+  const [messages, setMessages] = useState<Messages[]>([]);
   const channelName = useAppSelector((state) => state.channel.channelName);
   const channelId = useAppSelector((state) => state.channel.channelId);
   const user = useAppSelector((state) => state.user.user);
   // console.log(channelName);
+
+  useEffect(() => {
+    let collectionRef = collection(
+      db,
+      "channels",
+      String(channelId),
+      "messages"
+    );
+
+    onSnapshot(collectionRef, (snapshot) => {
+      let results: Messages[] = [];
+      snapshot.docs.forEach((doc) => {
+        results.push({
+          timestamp: doc.data().timestamp,
+          message: doc.data().message,
+          user: doc.data().user,
+        });
+      });
+      setMessages(results);
+      console.log(results);
+    });
+  }, [channelId]);
 
   const sendMessage = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
